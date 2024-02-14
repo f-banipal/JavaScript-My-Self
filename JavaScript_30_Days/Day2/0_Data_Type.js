@@ -831,15 +831,40 @@ console.log(typeof [0])        // object
 //      Plus sign(+)
 
 let myNumber = "12";  // 12: string
+
 console.log(parseInt(myNumber));  // 12 : 
 console.log(typeof(parseInt(myNumber)));  // number
 
 console.log(Number(myNumber));  // 12 : 
-console.log(typeof(Number(myNumber)));  // Number
+console.log(typeof(Number(myNumber)));  // number
 
 console.log(+(myNumber));  // 12 : 
-console.log(typeof(+(myNumber)));  // Number
+console.log(typeof(+(myNumber)));  // number
 
 
 //! String to Float
 // We can convert string float number to a float number. Any float number inside a quote is a string float number. An example of a string float number: '9.81', '3.14', '1.44', etc. We can convert string float to number using the following methods:
+
+//      parseFloat()
+//      Number()
+//      Plus sign(+)
+
+
+let myNumber1 = "12.458";  // 12: string
+
+console.log(parseFloat(myNumber1));  // 12.458 : 
+console.log(typeof(parseFloat(myNumber1)));  // number
+
+console.log(Number(myNumber1));  // 12.458 : 
+console.log(typeof(Number(myNumber1)));  // number
+
+console.log(+(myNumber1));  // 12.458 : 
+console.log(typeof(+(myNumber1)));  // number
+
+//! Float to Int
+// We can convert float numbers to integers. We use the following method to convert float to int:
+
+//      parseInt()
+
+let myNumber2 = 9.81;
+console.log(parseInt(myNumber2));  // 9
