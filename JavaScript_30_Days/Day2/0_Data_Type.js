@@ -490,6 +490,7 @@ let string5 = 'JavaScript'
 console.log(string5.substring(0, 4));  // Java
 console.log(string5.substring(4, 10));  // Script
 console.log(string5.substring(4));  // Script
+console.log(string5.substring(4, 6));  // Script
 
 //? **************************************************************
 //!  7 - split() => Changes to an array 
@@ -509,7 +510,7 @@ console.log(string7.split(', '));  // ['30 Days of JavaScript']
 
 
 //? **************************************************************
-//!  8 - trim()
+//!  8 - trim()  - trimStart(), trimEnd()
 //? *************************************************************
 // Removes trailing space in the beginning or the end of a string.
 
@@ -520,7 +521,21 @@ console.log(string8.trim());  // 30 Days Of JavaScript
 console.log(string8.trim(''));  // 30 Days Of JavaScript
 console.log(string8.trim(' '));  // 30 Days Of JavaScript
 console.log(string8.trim('  '));  // 30 Days Of JavaScript
-console.log(string8);  // Original degeri degistirmez ama bir kopyasini alir.
+console.log(string8.trimStart());  // 
+console.log(string8.trimEnd());  // 
+
+
+let cumle = "   Bu cümlenin sagindaki boşluklari kaldir.    ";
+
+// Sağdaki boşlukları kaldır
+let trimmedRight = cumle.replace(/\s+$/, '');
+
+console.log(trimmedRight);
+
+// Soldaki boşlukları kaldır
+let trimmedLeft = cumle.replace(/^\s+/, '');
+
+console.log(trimmedLeft);
 
 
 //? **************************************************************
@@ -547,6 +562,16 @@ let string10 = 'Benim adim Ferit Banipal.'
 console.log(string10.replace('Banipal', 'Joseph'));
 
 
+let yeniDunya = "Yeni bir Dunya doguyor ve donuyor, zaferimiz buyuktur. Dunya her seye egemen, Dunya ve Mars gibi";
+let regex = /Dunya/g;
+let newYeniDunya = yeniDunya.replace(/Dunya/g, "Jupiter");
+console.log(newYeniDunya);
+console.log(yeniDunya);
+
+//! veya kisaca
+// console.log(yeniDunya.replace(/Dunya/g, "Jupiter"));
+
+
 //? **************************************************************
 //!  11 - charAt()
 //? *************************************************************
@@ -563,6 +588,11 @@ console.log(string11.charAt(1));  // 0
 // Eğer belirtilen indeks dize uzunluğunu aşarsa, boş bir dize ("") döndürür.
 // Karakteri okuma amacıyla kullanılır, bu nedenle atama yapılamaz.
 
+console.log(string11.charAt(21));  // ("")
+console.log(string11.charAt(20));  // t
+console.log(string11.charAt(50));  // ("")
+
+
 //? string[index]: 
 // Eğer belirtilen indeks dize uzunluğunu aşarsa, undefined değerini döndürür.
 // Belirtilen indeksteki karakteri okumak için kullanılabilir ve aynı zamanda bu indekse yeni bir karakter atamak için de kullanılabilir.
@@ -572,23 +602,244 @@ let str = 'Merhaba';
 
 let charArResult = str[2];  // r
 console.log(charArResult);
+
+let charArResult1 = str[8];  // undefined
+console.log(charArResult1);
+
+
 let charArMethod = str.charAt(2);  // r
 console.log(charArMethod);
+
+let charArMethod1 = str.charAt(8);  // ("")
+console.log(charArMethod1);
 
 // Atama
 str[2] = 'X';
 console.log(str);  // Merhaba  : r yi X ile degistirmedi
 
+
 let str1 = 'Merhaba';
-let newArray = str1.split(''); // Diziyi parçalara ayır
-newArray[2] = 'X';            // Belirli indeksteki karakteri değiştir
+let newArray = str1.split(''); // Diziyi parçalara ayır ve dizi bir Array a donusur.
+console.log(newArray);  // ['M', 'e', 'r', 'h', 'a', 'b', 'a']
+
+
+newArray[2] = 'X';            // Belirli indeksteki karakteri değiştir. "r'", 'X' ile degistir. 
 let modifiedStr = newArray.join(''); // Parçaları birleştir
 console.log(modifiedStr);     // "MeXhaba"
 
+//? **************************************************************
+//!  12 - charCodeAt():
+//? *************************************************************
+
+// Takes index and it returns char code (ASCII number) of the value at that index
+//! string.charCodeAt(index)
+
+let string12 = '30 Days Of JavaScript'
+console.log(string12.charCodeAt(0));  // ASCII Code of '3' is 51.
+console.log(string12.length);
+console.log(string12.charCodeAt(string12.length-1));  // ASCII Code of 't' is 116.
 
 
+//? **************************************************************
+//!  13 - indexOf():  parantez icindeki stringin cumledeki ilk yerinin ilk karakterinin indeksini verir.
+//? *************************************************************
+// Takes a substring and if the substring exists in a string it returns the first position of the substring if does not exist it returns -1
+//! string.indexOf(substring)
+
+
+let string13 = '30 Days Of JavaScript'
+
+console.log(string13.indexOf('0'));  // Index No of '0' is : 1
+console.log(string13.indexOf('Of'));  // Index No of 'Of' is : start from 8
+console.log(string13.lastIndexOf('Of'));
+console.log(string13.indexOf(' '));  // Index No of 'first space' is : 2
+
+
+//? **************************************************************
+//!  14 - lastIndexOf(): parantez icindeki stringin cumledeki son yerinin ilk karakterinin indeksini verir.
+//? *************************************************************
+// Takes a substring and if the substring exists in a string it returns the last position of the substring if it does not exist it returns -1
+//!syntax: string.lastIndexOf(substring)
+
+let string14 = 'I love JavaScript. If you do not love JavaScript what else can you love.'
+
+console.log(string14.length);  // 72
+console.log(string14.indexOf('love'));
+console.log(string14.lastIndexOf('love'));  // 67 : the first position of substing
+console.log(string14.lastIndexOf('what'));  // 49
+console.log(string14.lastIndexOf());  // -1
+console.log(string14.lastIndexOf(""));  // 72
+console.log(string14.lastIndexOf("."));  // 71
+console.log(string14.indexOf('wha'));  // 49
+
+
+//? **************************************************************
+//!  15 - concat():
+//? *************************************************************
+// it takes many substrings and joins them.
+//! string.concat(substring, substring, substring)
+
+// ORNEK-1
+//--------
+
+let string15 = '30';
+console.log(string15.concat(" Days ", "Of ", "JavaScript"));
+console.log(string15);  // ilk string degismez.
+
+// ORNEK-2
+//--------
+
+const sayiList1 = "1, 2, 3, 4, 5, ";
+const sayiList2 = "6, 7, 8, 9, 10";
+const havaGunesli = true
+console.log(sayiList1.concat(sayiList2));
+console.log(sayiList1.concat(havaGunesli));
+
+// ORNEK-3
+//--------
+
+let array1 = [1, 2, 3];
+let array2 = [4, 5, 6];
+
+console.log(array1.concat(array2));  // [1, 2, 3, 4, 5, 6]
+console.log(array1.concat(array2[1]));  // [1, 2, 3, 5] 
+
+// ORNEK-4
+//--------
+
+let array = [1, 2, 3];
+let newItem = 4;
+console.log(array.concat(newItem, 5, [6, 7, 8]));
+
+let array3 = [1, 2, 3];
+let joinedString = array3.join(", ");  // Bir array'i string'e cevirmek istiyorsak .join() metodu kullanilabilir.
+console.log(joinedString);  // "1, 2, 3"
+console.log(typeof(joinedString));  // string
+
+
+//? **************************************************************
+//!  16 - startsWith()
+//? *************************************************************
+// it takes a substring as an argument and it checks if the string starts with that specified substring. It returns a boolean(true or false).
+//! syntaxstring.startsWith(substring)
+
+let string16 = 'Love is the best to in this world'
+
+console.log(string16.startsWith("L")); // true
+console.log(string16.startsWith("Love"));  // true
+console.log(string16.startsWith("love"));  // false
+console.log(string16.startsWith("ove"));  // false
+
+// Burada:
+// indexOf() veya match() metodu da denenebilir
+
+let str16 = "Merhaba, dünya!";
+console.log(str16.indexOf("Merhaba")); // 0
+
+console.log(str16.match(/dünya/)); // ['dünya', index: 9, input: 'Merhaba, dünya!', groups: undefined]
+
+
+//? **************************************************************
+//!  17 - endsWith()
+//? *************************************************************
+// it takes a substring as an argument and it checks if the string ends with that specified substring. It returns a boolean(true or false).
+//! string.endsWith(substring)
+
+console.log(string16.endsWith("ove"));  // false
+console.log(string16.endsWith("ld"));  // true
+console.log(string16.endsWith(""));  // true
+console.log(string16.endsWith("d"));  // true
+
+//? **************************************************************
+//!  18 - search()
+//? *************************************************************
+// it takes a substring as an argument and it returns the index of the first match. The search value can be a string or a regular expression pattern.
+//! string.search(substring)
+
+let string18 = 'I love JavaScript. If you do not love JavaScript what else can you love.'
+console.log(string18.search('love'));  //2 : icerideki ifadenin ilk karakterinin indeksini dondurur
+console.log(string18.search('JavaScript'));  // 7
+
+
+//? **************************************************************
+//!  19 - match()
+//? *************************************************************
+// it takes a substring or regular expression pattern as an argument and it returns an array if there is match if not it returns null. Let us see how a regular expression pattern looks like. It starts with / sign and ends with / sign.
+//! syntax: string.match(substring)
+
+let string19 = 'love'
+let patternOne = /love/     // with out any flag
+let patternTwo = /love/gi   // g-means to search in the whole text, i - case insensitive
+
+let str19 = 'I love JavaScript. If you do not Love JavaScript what else can you love.'
+console.log(str19.match('love'));  // ['love', index: 2, input: 'I love JavaScript. If you do not Love JavaScript what else can you love.', groups: undefined]
+console.log(str19.match(/love/g));  // ['love', 'love']
+console.log(str19.match(/love/gi));  // ['love', 'Love', 'love']
+
+// Let us extract numbers from text using a regular expression. This is not the regular expression section, do not panic! We will cover regular expressions later on.
+
+let txt = 'In 2019, I ran 30 Days of Python. Now, in 2020 I am super exited to start this challenge';
+let regEx = /\d+/;
+
+// d with escape character means d not a normal d instead acts a digit
+// + means one or more digit numbers,
+// if there is g after that it means global, search everywhere.
+
+console.log(txt.match(regEx));
+console.log(txt.match(/\d+/g));
+
+
+
+//? **************************************************************
+//!  20 - repeat()
+//? *************************************************************
+// it takes a number as argument and it returns the repeated version of the string.
+//! string.repeat(n)
+
+let string20 = 'love';
+let repeatStr = string20.repeat(3);  // lovelovelove
+
+console.log(repeatStr);
 
 
 //! ===============================================================
 //?  C - Checking Data Types and Casting
 //!================================================================ //
+
+//! Checking Data Types:
+// To check the data type of a certain variable we use the typeof method.
+
+console.log(typeof 'Asabeneh')  // string
+console.log(typeof string20)   // string
+console.log(typeof 10)          // number
+console.log(typeof 3.14)        // number
+console.log(typeof true)        // boolean
+console.log(typeof false)       // boolean
+console.log(typeof NaN)         // number
+console.log(typeof job)         // undefined
+console.log(typeof undefined)   // undefined
+console.log(typeof null)        // object
+console.log(typeof [0])        // object
+
+// Casting: Converting one data type to another data type. We use parseInt(), parseFloat(), Number(), + sign, str() When we do arithmetic operations string numbers should be first converted to integer or float if not it returns an error.
+
+//! String to Int
+// We can convert string number to a number. Any number inside a quote is a string number. An example of a string number: '10', '5', etc. We can convert string to number using the following methods:
+
+//      parseInt()
+//      Number()
+//      Plus sign(+)
+
+let myNumber = "12";  // 12: string
+console.log(parseInt(myNumber));  // 12 : 
+console.log(typeof(parseInt(myNumber)));  // number
+
+console.log(Number(myNumber));  // 12 : 
+console.log(typeof(Number(myNumber)));  // Number
+
+console.log(+(myNumber));  // 12 : 
+console.log(typeof(+(myNumber)));  // Number
+
+
+//! String to Float
+// We can convert string float number to a float number. Any float number inside a quote is a string float number. An example of a string float number: '9.81', '3.14', '1.44', etc. We can convert string float to number using the following methods:
