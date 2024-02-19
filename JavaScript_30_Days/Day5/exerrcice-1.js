@@ -239,13 +239,9 @@ console.log(filterOut);
 
 
 
-
 /* ============================================================*/
 //?    15. Sort the array using sort() method
 /* ============================================================*/
-
-
-
 
 
 //! Normal Siralama,
@@ -280,3 +276,95 @@ itCompanies1.sort(function(a, b){
     return b.localeCompare(a);
 })
 console.log(`Tersten Siralama : ${itCompanies1.slice("").join(", ")}.`);
+
+
+/* ============================================================*/
+//?    16. Reverse the array using reverse() method
+/* ============================================================*/
+
+    const companies16 = ["Facebook", "Google", "Microsoft", "Apple", "IBM", "Oracle", "Amazon"]
+    console.log(companies16.reverse());
+
+
+/* ============================================================*/
+//?    17. Slice out the first 3 companies from the array
+/* ============================================================*/
+
+    // console.log(companies16(0, 3));
+
+
+
+
+/* ============================================================*/
+//?    18. Slice out the last 3 companies from the array
+/* ============================================================*/
+
+
+
+/* ============================================================*/
+//?    19. Slice out the middle IT company or companies from the array
+/* ============================================================*/
+
+    const companies19 = ["Facebook", "Microsoft", "Apple", "IBM", "Oracle", "Amazon"]
+
+    if (companies19.length%2 === 0){
+        let middle1 = companies19.length/2
+        let bas1 = companies19.slice(middle1)
+        
+        console.log(`The middle companies are ${companies19.slice(bas1)}`);
+    }else {
+        console.log(`${Math.floor(companies19.length/2)}`);
+    }
+
+
+/* ============================================================*/
+//?    20. Remove the first IT company from the array
+/* ============================================================*/
+    const companies20 = ["Facebook", "Google", "Microsoft", "Apple", "IBM", "Oracle", "Amazon"]
+    console.log(companies20.slice(1));
+
+
+
+
+
+/* ============================================================*/
+//?    21. Remove the middle IT company or companies from the array
+/* ============================================================*/
+    const companies21 = ["Facebook", "Google", "Microsoft", "Apple", "IBM", "Oracle", "Amazon"]
+    const len = companies21.length;
+    const middle = Math.floor(len/2)
+    console.log(middle);
+
+    if (len % 2 === 0) {
+        companies21.splice(middle-1, 2);
+    } else {
+        companies21.splice(middle, 1);
+    }
+    console.log(companies21);
+
+
+/* ============================================================*/
+//?    22. Remove the last IT company from the array
+/* ============================================================*/
+
+    companies21.pop()
+    console.log(companies21);
+
+    // veya
+
+    companies21.splice(0)
+    console.log(companies21);
+
+
+/* ============================================================*/
+//?    23. Remove all IT companies
+/* ============================================================*/
+
+let bos = ``
+for (let i = 0; i < 3; i++){
+
+    for(let j = 0; j <= i; j++){
+    bos += `#`
+    console.log(bos);
+}
+}
